@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V38 每日內容套版預覽</title>
+<style>body{margin:0;background:#29251f;color:#493a2c;font-family:Georgia,"Noto Serif TC",serif}main{box-sizing:border-box;width:min(810px,100%);margin:24px auto;padding:32px 40px;background:#ead7b5}aside{padding:12px 16px;margin-bottom:24px;background:#f5e9d4;font:14px/1.8 sans-serif}h2{font-size:30px}.toolbar,.note{display:none}@media(max-width:600px){main{margin:0;padding:28px 22px}}</style>
+</head><body><main><aside>每日內容排版示範｜縮窄視窗可看單欄排列。此頁沒有主站動畫、換日與貼紙功能。影片實播請在 HTTP(S) 主站確認。</aside><!-- V38 DAY 內容片段：不要加 html、head、body 或 JavaScript。 -->
+<!-- 將本檔複製為 days/day01.html 等；路徑均以主站 index.html 為準。 -->
+<!-- 保留這行樣式載入；css/day-content.css 必須一起交給分支 C。 -->
+<link rel="stylesheet" href="css/day-content.css">
+
+<div class="day-content">
+  <!-- 修改 DAY 數字；小標題可自行改文字，不必每一天都有相同段落。 -->
+  <h2 style="text-align:center;font-family:Arial,'Noto Sans TC',sans-serif;font-size:clamp(28px,3vw,36px);font-weight:700;line-height:1.3;color:#706460;margin:0 0 30px">DAY 1</h2>
+
+  <!-- Opener：本日開場，放在 DAY 標題後、所有影片與故事前。
+       修改 p 內的文字即可；要分段，複製一組完整的 p。
+       此版不顯示 Opener 小標題；左側直線與留白已設定在 section 的 style。
+       多段時複製原有 p 並保留 style；可在上一段末尾用 br 換行，或自行增加段落間距。
+       不需要開場時，可刪除整個 section。 -->
+  <section class="day-block day-opener" style="border-left:5px solid #95847b;padding:clamp(12px,2vw,20px) clamp(18px,3vw,32px);margin:0 0 32px;color:#706460;font-family:Arial,'Noto Sans TC',sans-serif">
+    <p style="font-size:clamp(16px,1.5vw,18px);line-height:1.65;margin:0">在這裡填入本日的開場文字。</p>
+  </section>
+
+<!-- X 影片：直接使用實際 MP4 網址，不載入整篇推文。
+     新的 X 貼文請交給分支 B 取得對應影片網址。
+     下方 source src 是影片檔網址；不能直接填 x.com 的貼文網址。
+     寬度 100% 與 16:9 維持滿版、不裁切；V38 換日時會暫停 video。 -->
+<section class="day-block clip-block">
+  <!-- 小標題可以修改，不需要就刪除整行。 -->
+  <h3>在這裡填入影片小標題</h3>
+  <video
+    controls playsinline preload="metadata"
+    aria-label="Gack 和 Nimu 的挖礦片段"
+    poster="https://pbs.twimg.com/amplify_video_thumb/2110550583510016000/img/dh9MgerK9lCHm-sP.jpg"
+    width="1280" height="720"
+    style="display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;background:#151515;object-fit:contain"
+  >
+    <source src="https://video.twimg.com/amplify_video/2110550583510016000/vid/avc1/1280x720/MR_UFjDM8PqZW82d.mp4" type="video/mp4">
+    你的瀏覽器無法播放此影片，請使用下方原始片段連結。
+  </video>
+  <!-- 來源連結不影響播放器寬度，與 YouTube 區塊的備用連結相同。 -->
+  <p class="day-source">
+    <a href="https://x.com/eclipsemaya_/status/2110550669145055438"
+       target="_blank" rel="noopener noreferrer">在 X 觀看原始片段 ↗</a>
+  </p>
+</section>
+
+
+  <!-- 區塊 1：標題與文字。改 h3 及 p 中間的文字。
+       一段文字使用一組 p；不要將 h3、figure 或 div 放進 p 內。 -->
+  <section class="day-block">
+    <h3>在這裡填入小標題</h3>
+    <p>在這裡填入第一段故事。這是排版示範文字，不是正式故事。</p>
+    <p>在這裡填入第二段故事。可複製整個段落，增加更多內容。</p>
+  </section>
+
+  <!-- 區塊 2：單張圖片。修改 src 的圖片路徑及 alt 的畫面描述。
+       例如 images/day01/home.png；不要寫 ../images/day01/home.png。
+       不要只修改副檔名：檔案名稱、大小寫與副檔名必須與實際檔案一致。 -->
+  <figure class="day-block">
+    <img src="images/day-template/scene-a.svg" alt="示範圖片 A，請改成實際畫面描述" loading="lazy" width="960" height="540">
+  </figure>
+
+  <!-- 區塊 3：YouTube 影片。這裡沿用 V38 已有的測試影片。
+       換片時要同時修改 iframe src 中的影片 ID 與下方觀看連結。
+       embed/ 後填影片 ID，不要直接放 watch?v= 網址或整條分享網址。
+       保留 enablejsapi=1，讓 V38 換日時送出暫停指令。
+       保留 referrerpolicy 與 allowfullscreen。影片本身仍須允許外部嵌入。 -->
+  <section class="day-block clip-block">
+    <h3>在這裡填入影片小標題（不需要可刪除整行）</h3>
+    <div class="video x-embed-slot youtube-slot day-video">
+      <iframe src="https://www.youtube.com/embed/NxJLy2DgUhM?enablejsapi=1"
+        title="示範影片，請改成實際影片名稱" loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <p class="day-source"><a href="https://www.youtube.com/watch?v=NxJLy2DgUhM" target="_blank" rel="noopener noreferrer">在 YouTube 觀看 ↗</a></p>
+  </section>
+
+  <!-- Google Drive 影片區塊：複製 section 整段到正式 DAY 內。
+       分享權限必須允許預期讀者觀看，公開網站通常使用「知道連結的任何人／檢視者」。
+       換片時同步修改 iframe src 與備用連結中的檔案 ID。
+       例如分享網址 /file/d/ABC123/view 裡的 ABC123 就是檔案 ID。
+       將下方兩處 1JXzpGJHU76K_0W3MD8UVLJfUykf17NOq 改成新 ID 即可。
+       iframe 的 title 請改成實際影片名稱；loading 與 allowfullscreen 請保留。
+       iframe 使用 /preview，不是分享網址的 /view。
+       16:9 為此次測試外框，尚未確認來源影片的實際比例。
+       正式 DAY 使用下方行內樣式即可，不必修改主站 index.html。
+       給 C：現有 media.js 沒有 Drive 暫停處理，整合前需補上換日卸載／返回重載。
+       請不要將 Drive 網頁網址直接放進 video 的 source。 -->
+  <section class="day-block">
+    <!-- 影片小標題可改名，不需要時刪除整行 h3。 -->
+    <h3>Google Drive 影片（小標題可修改或刪除）</h3>
+    <div class="day-drive-player" style="position:relative;width:100%;aspect-ratio:16/9;background:#151515">
+      <iframe
+        src="https://drive.google.com/file/d/1JXzpGJHU76K_0W3MD8UVLJfUykf17NOq/preview"
+        title="Google Drive 影片"
+        loading="lazy"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        style="position:absolute;inset:0;display:block;width:100%;height:100%;border:0"
+      ></iframe>
+    </div>
+    <p class="day-source"><a href="https://drive.google.com/file/d/1JXzpGJHU76K_0W3MD8UVLJfUykf17NOq/view" target="_blank" rel="noopener noreferrer">在 Google Drive 觀看原始影片 ↗</a></p>
+  </section>
+
+  <!-- 區塊 4：左圖右文。電腦左右並排；手機圖片在上、文字在下。 -->
+  <section class="day-block day-columns">
+    <figure>
+      <img src="images/day-template/scene-a.svg" alt="請填入左側圖片描述" loading="lazy" width="960" height="540">
+      <figcaption>圖片說明（不需要時可刪除整行 figcaption）。</figcaption>
+    </figure>
+    <div>
+      <h3>左圖右文的小標題</h3>
+      <p>在這裡填入與圖片搭配的故事文字。</p>
+    </div>
+  </section>
+
+  <!-- 區塊 5：左文右圖。電腦左右並排；手機文字在上、圖片在下。
+       想讓手機圖片先出現，請直接改用上方「左圖右文」區塊。 -->
+  <section class="day-block day-columns">
+    <div>
+      <h3>左文右圖的小標題</h3>
+      <p>在這裡填入與圖片搭配的故事文字。</p>
+    </div>
+    <figure>
+      <img src="images/day-template/scene-b.svg" alt="請填入右側圖片描述" loading="lazy" width="960" height="540">
+      <figcaption>圖片說明（可刪除）。</figcaption>
+    </figure>
+  </section>
+
+  <!-- 區塊 6：兩張圖片並排。手機依序變成上下排列，不裁切圖片。 -->
+  <div class="day-block day-columns">
+    <figure>
+      <img src="images/day-template/scene-a.svg" alt="請填入第一張圖片描述" loading="lazy" width="960" height="540">
+      <figcaption>第一張圖片的說明。</figcaption>
+    </figure>
+    <figure>
+      <img src="images/day-template/scene-b.svg" alt="請填入第二張圖片描述" loading="lazy" width="960" height="540">
+      <figcaption>第二張圖片的說明。</figcaption>
+    </figure>
+  </div>
+
+  <!-- 區塊 7：圖片下方說明。img 與 figcaption 放在同一個 figure 裡。
+       換成不同尺寸的圖時，width 與 height 請填圖片原始像素尺寸；CSS 會等比例縮放。 -->
+  <figure class="day-block">
+    <img src="images/day-template/scene-b.svg" alt="請填入圖片描述" loading="lazy" width="960" height="540">
+    <figcaption>在這裡填入圖片下方的說明，也可註明投稿人或來源。</figcaption>
+  </figure>
+
+  <!-- 選用：X / Twitter 來源連結。這是可點擊連結，不是影片播放器。
+       請傳來實際推文網址後再製作影片嵌入；不要將 x.com/status 網址直接填入 iframe。
+       V38 只有 DAY 1 主動初始化官方 widget；其他天要由 C 處理相容性。
+       以下為原 DAY 1 已有的示範來源，可刪除整個區塊。 -->
+  <p class="day-block day-source"><a href="https://x.com/eclipsemaya_/status/2109486911110947008" target="_blank" rel="noopener noreferrer">到 X 觀看原始片段 ↗</a></p>
+
+  <!-- 選用：有合法可用的 MP4 檔時，移除本段註解外框後再填入真實檔案。
+       影片可放 images/day01/clip.mp4。不要使用 X 推文網頁網址作為 MP4。
+       V38 換日時會暫停原生 video。沒有檔案時不要啟用這個區塊。
+  <figure class="day-block">
+    <video controls playsinline preload="metadata" aria-label="請填入影片名稱">
+      <source src="images/day01/clip.mp4" type="video/mp4">
+      你的瀏覽器無法播放此影片。
+    </video>
+    <figcaption>請填入影片說明。</figcaption>
+  </figure>
+  -->
+
+  <!-- Summary：本日結尾，放在所有故事、圖片與影片後，貼紙控制項前。
+       修改 p 內的文字即可；可新增段落，不會影響其他天。
+       此版不顯示 Summary 小標題，與開場使用相同的左側直線樣式。
+       修改文字即可，不需要更動 style。
+       不需要結尾時，可刪除整個 section。 -->
+  <section class="day-block day-summary" style="border-left:5px solid #95847b;padding:clamp(12px,2vw,20px) clamp(18px,3vw,32px);margin:0 0 32px;color:#706460;font-family:Arial,'Noto Sans TC',sans-serif">
+    <p style="font-size:clamp(16px,1.5vw,18px);line-height:1.65;margin:0">在這裡填入本日的結尾總結。</p>
+  </section>
+</div>
+
+<!-- V38 必要控制項：每份 DAY 僅保留一組。不要刪除或修改 id。
+     只需將下方按鈕文字的 DAY 1 改為本日數字。
+     V38 使用 page.querySelector 在當日範圍綁定；請勿自行改成全站唯一 ID。 -->
+<div class="toolbar">
+  <button type="button" id="reset">清除 DAY 1 的貼紙</button>
+  <button type="button" id="return">收回預覽貼紙</button>
+</div>
+<p class="note">拖出卷軸的貼紙會刪除。</p>
+</main>
+</body></html>
