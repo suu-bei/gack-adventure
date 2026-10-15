@@ -194,11 +194,16 @@ function renderPlaced() {
   });
   refreshPlacedPositions();
 }
-function build() {
-  let nav = document.querySelector("#days");
-  for (let i = 1; i <= DAY_COUNT; i++) {
-    let b = make("button", "", nav);
-    b.textContent = "DAY " + i;
-    b.onclick = () => switchDay(i);
-  }
+function build(){
+ const nav=document.querySelector('#days');
+ const title=make('div','log-title',nav);title.textContent='✦ ADVENTURE LOG ✦';
+ const grid=make('div','log-grid',nav);
+ for(let i=1;i<=15;i++){
+  const b=make('button','log-day',grid);b.type='button';b.dataset.day=String(i);
+  const number=make('span','log-number',b);number.textContent='DAY '+i;
+  const symbol=make('span','log-symbol',b);symbol.textContent=i<=DAY_COUNT?'▤':'?';
+  if(i>DAY_COUNT){b.disabled=true;b.classList.add('locked');b.title='DAY '+i+' · Coming soon'}
+  else{b.title='Open DAY '+i;b.onclick=()=>switchDay(i)}
+ }
+ const foot=make('div','log-footer',nav);foot.textContent='THE JOURNEY CONTINUES…';
 }

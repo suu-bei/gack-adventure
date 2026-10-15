@@ -5,7 +5,6 @@ const gackMenuSheet = document.getElementById("gackMenuSheet");
 const gackMenuClose = document.getElementById("gackMenuClose");
 const gackMenuViews = {
   home: document.getElementById("gackMenuHome"),
-  index: document.getElementById("gackMenuIndex"),
   credits: document.getElementById("gackMenuCredits"),
 };
 function gackMenuView(view) {
@@ -22,19 +21,21 @@ function gackMenuSet(open) {
 gackMenuToggle.onclick = () => gackMenuSet(true);
 gackMenuClose.onclick = () => gackMenuSet(false);
 gackMenuShade.onclick = () => gackMenuSet(false);
-document.getElementById("gackOpenIndex").onclick = () => gackMenuView("index");
 document.getElementById("gackOpenCredits").onclick = () =>
   gackMenuView("credits");
 document
   .querySelectorAll("[data-gack-back]")
   .forEach((b) => (b.onclick = () => gackMenuView("home")));
 const gackIndexGrid = document.getElementById("gackIndexGrid");
-for (let n = 1; n <= DAY_COUNT; n++) {
+for (let n = 1; n <= 15; n++) {
   const b = document.createElement("button");
   b.type = "button";
   b.className = "gack-index-button";
   b.textContent = "DAY " + n;
-  b.onclick = () => {
+  if (n > DAY_COUNT) {
+    b.disabled = true;
+    b.title = "Coming soon";
+  } else b.onclick = () => {
     gackMenuSet(false);
     if (day !== n) switchDay(n);
   };
@@ -45,9 +46,7 @@ function gackRefreshIndex() {
     .querySelectorAll("button")
     .forEach((b, i) => b.setAttribute("aria-current", String(day === i + 1)));
 }
-document
-  .getElementById("gackOpenIndex")
-  .addEventListener("click", gackRefreshIndex);
+gackMenuToggle.addEventListener("click", gackRefreshIndex);
 const gackHint = document.getElementById("gackSwipeHint");
 function hideGackSwipeHint() {
   gackHint.classList.remove("is-visible");
