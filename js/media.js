@@ -7,6 +7,13 @@ function pauseDepartingDay(oldDay) {
     } catch (e) {}
   });
   oldPage.querySelectorAll("iframe").forEach((frame) => {
+    if(frame.dataset.gackNativePlayer === "1") {
+      try {
+        frame.contentDocument?.querySelectorAll("video,audio").forEach(media=>media.pause());
+        frame.contentWindow?.postMessage({type:"gack-native-video-pause"},location.origin);
+      } catch(e) {}
+      return;
+    }
     const url = frame.getAttribute("src") || "";
     if (/youtube\.com\/embed\//.test(url)) {
       try {
