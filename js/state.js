@@ -12,7 +12,6 @@ let day = 1,
 const KEY = "gack-figma-demo-desktop-v4";
 let switching = false;
 try {
-  const stored = JSON.parse(localStorage.getItem(KEY) || "{}");
-  if(stored && typeof stored === "object" && !Array.isArray(stored))items=stored;
+  items = JSON.parse(localStorage.getItem(KEY) || "{}");
 } catch {}
 function hideFloating() {}

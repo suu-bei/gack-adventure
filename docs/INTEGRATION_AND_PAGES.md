@@ -1,46 +1,28 @@
-# V41 一次完整更新與回復方式
+# 分支整合、備份與 GitHub Pages
 
-## 更新前
+## 本次未發布
 
-本包有兩個重要目錄：
+目前交付 V38 檔案包供檢查。未連線修改 GitHub，未覆蓋正式站。尚未收到 A/B 分支檔案，沒有宣稱已完成 A/B 整合或衝突檢查。
 
-- gack-adventure/：完整的 V41 網站檔案。
-- backups/：從目前 GitHub 下載並核對的完整舊版 ZIP，包含目前 repo 的所有 30 個檔案。
+## 後續整合規則
 
-audit/ 與 tests/ 是檢查證據，不必上傳網站。
+1. 保留上一個可用 commit／tag 及完整檔案包；V37 原始備份隨交付包提供。
+2. 確認 A/B 各自以哪個版本為基準，取得檔案差異後再整合。
+3. A 主要提供 index.html、css 與 images；B 主要提供 days；C 維護載入流程、Credits、相容檢查及最終檔案。
+4. 共用檔案同時修改時逐段比較，不直接以其中一方整份覆蓋。即使 Git 無文字衝突，也檢查 class、ID、圖片路徑、播放器標記及觸控操作的語意衝突。
+5. 完成 Desktop/Mobile 回歸、記錄變更與未解問題，取得使用者確認後才發布。
 
-目前 GitHub 未被此工作修改。若你檢查報告後決定測試 V41，請依下面方式一次提交。
+## 使用 GitHub 網頁上傳
 
-## GitHub 網頁上傳
-
-1. 解壓 ZIP，打開本機 gack-adventure 資料夾。
-2. GitHub 開到 repo 的最外層，也就是看得到原 index.html 的位置。
-3. Add file → Upload files。
-4. 將本機 gack-adventure 裡的 index.html、check.html、assets、css、js、days、credits、data、images、players 等一起拖進上傳區。docs、tools、README 也可以一併上傳。
-5. 確認上傳清單中是 assets/app.…js、days/day01.html，而不是 gack-adventure/assets/… 或 days/days/…。
-6. 等檔案全上傳好後，按一次 Commit changes。不要每個資料夾拆成不同提交，以減少暫時半套更新。
-7. 等最新 pages build and deployment 成功。先前取消的舊工作不代表最新部署失敗。
-8. Ctrl+Shift+R 重新整理。將主站網址最後補上 check.html 開啟檢查頁，按「開始檢查」。
-9. 如果顯示 0 個需要檢查，表示 V41 紀錄中的檔案一致。若有紅字，依該列檔案路徑補上，不要因 X 播放失敗就重新上傳所有 DAY。
-
-不要先刪除 GitHub 原資料夾。既有 V36/V37、preview.html、root style.css/script.js 沒被主站載入，留下也不會與新版衝突；本次乾淨發布目錄沒有再放它們，但原版完整保存在 backups。是否另外整理 GitHub 的歷史檔案可稍後決定，不是影片修復的必要步驟。
-
-如果你在本次稽核之後又修改文章，先保留新文章，再與本包 days 比較。V41 的 DAY 檔案與擷取時的 GitHub 完全相同，不包含你後來另加的新稿。
-
-## 播放測試
-
-DAY 1 的 X 區塊現在有明確的播放按鈕。按下後：
-
-- 正常：開始播放、播放時間前進。
-- 載入中：顯示 Loading。
-- 失敗：顯示 Retry 與原始片段連結，不再只有無反應的原生控制項。
-
-這些狀態能區分控制項與來源失敗；它們不會繞過來源服務權限或 403。真實 X 播放仍需實際環境確認。
-
-依序檢查播放→DAY 2→DAY 1，確認暫停與返回。再測 YouTube／Drive。手機在文字區左右滑動，播放器裡的手勢保留給播放器。
+1. 先下載目前 GitHub 專案 ZIP 作為回復用備份；不要刪除現有 images 或其他不相關檔案。
+2. 解壓本次 ZIP，找到 `gack-adventure/`。
+3. 將該資料夾「內部」的 index.html、css、js、days、images、credits（可連同 docs、README）上傳到 repo 根目錄。不要再包一層 gack-adventure，避免網址多一層路徑。
+4. 不需上傳交付包外層的 backups、tests、SHA256SUMS.txt；這些是備份與驗證資料。
+5. 先在不作正式 Pages 來源的測試分支提交，例如 integration/v38。GitHub 一般分支網址不會直接執行網站；需本機 HTTP 預覽或另設測試 Pages 環境。
+6. 確認修改內容後，由使用者決定何時合併正式 Pages 來源分支。若現在 Pages 指向 main，直接向 main 提交會觸發正式更新。
+7. 若原本 Pages 已可用，沿用既有設定即可；本包使用相對路徑，相容專案型 Pages 的 /gack-adventure/ 前綴。
+8. 發布後以原網站網址檢查四天、手機循環、選單、貼紙與影片。必要時重新整理，清除舊頁面快取。
 
 ## 回復
 
-若決定回復，解壓 backups/github_160ffc9_before_V41.zip，將裡面的原 repo 檔案放回根目錄並提交。原 index.html 會重新引用原本的 js/css 路徑；新的 assets、check.html 等留下不會被舊入口載入，不必為回復而先刪除。
-
-原 repo 的 images/sticker1.png、sticker2.png 已包含在完整備份與 V41，不會再出現「交付包沒有原貼紙圖」的情況。
+若 V38 上線後發現問題，回復到上一個可用 Git commit 最完整。也可將備份 V37 單檔還原為根目錄 index.html，並保留原 images；該單檔不依賴 V38 的 css/js/days。不要刪除已新增的投稿或素材來做回復。

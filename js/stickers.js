@@ -10,7 +10,7 @@ function refreshPlacedPositions() {
   }
 }
 function save() {
-  try { localStorage.setItem(KEY, JSON.stringify(items)); } catch(error) { console.warn("Sticker storage unavailable",error); }
+  localStorage.setItem(KEY, JSON.stringify(items));
 }
 function make(tag, cls, par) {
   let e = document.createElement(tag);
