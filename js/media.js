@@ -42,3 +42,21 @@ function restoreDayMedia(n) {
     delete frame.dataset.gackPaused;
   });
 }
+
+// Load the official widget library only for a DAY that actually contains a tweet.
+let twitterWidgetsRequest;
+function hydrateTwitterWidgets(page) {
+  if (!page.querySelector('blockquote.twitter-tweet')) return;
+  if (window.twttr?.widgets?.load) { window.twttr.widgets.load(page); return; }
+  if (!twitterWidgetsRequest) {
+    twitterWidgetsRequest = new Promise((resolve,reject) => {
+      const script=document.createElement('script');
+      script.src='https://platform.x.com/widgets.js';
+      script.async=true;
+      script.onload=resolve;
+      script.onerror=()=>{ twitterWidgetsRequest=undefined; reject(new Error('X widget library unavailable')); };
+      document.head.append(script);
+    });
+  }
+  twitterWidgetsRequest.then(()=>window.twttr?.widgets?.load(page)).catch(error=>console.warn(error));
+}

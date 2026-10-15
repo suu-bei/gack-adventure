@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gack 網站檔案檢查</title><style>
+body{font:16px/1.7 system-ui,sans-serif;max-width:940px;margin:30px auto;padding:0 18px;background:#292320;color:#f3dbaf}h1{font-size:26px}button{padding:10px 20px;cursor:pointer;background:#ead7b5;border:0;border-radius:5px;color:#503821;font-size:16px}table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px}th,td{text-align:left;border-bottom:1px solid #806d58;padding:8px;overflow-wrap:anywhere}.ok{color:#a9dfac}.bad{color:#ffb2a6}#summary{font-weight:bold}small{display:block;color:#ceb89a}</style></head><body>
+<h1>網站檔案完整性檢查</h1><p>這個頁面用來確認同一版本的檔案是否已完整上傳。它不會修改網站，也不會把檢查結果傳送出去。</p><button id="check" type="button">開始檢查</button><p id="summary" role="status">尚未開始。</p><small>檔案全部一致，代表上傳完整；不代表 X、YouTube 或 Google Drive 的影片一定可以播放。</small><table><thead><tr><th>檔案</th><th>結果</th></tr></thead><tbody id="results"></tbody></table>
+<script>
+const button=document.getElementById('check'),summary=document.getElementById('summary'),rows=document.getElementById('results');
+async function request(url){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),15000);try{const response=await fetch(url,{cache:'no-store',signal:controller.signal});if(!response.ok)throw new Error('HTTP '+response.status);const bytes=await response.arrayBuffer();return bytes}finally{clearTimeout(timer)}}
+button.onclick=async()=>{
+ button.disabled=true;rows.textContent='';summary.textContent='正在取得版本紀錄…';
+ try{
+  if(location.protocol==='file:')throw new Error('請從 GitHub Pages 或本機 HTTP 網址開啟。');
+  const manifest=JSON.parse(new TextDecoder().decode(await request('data/release.json')));
+  const entries=Object.entries(manifest.files);let cursor=0,ok=0,bad=0,done=0;
+  async function worker(){while(cursor<entries.length){const [name,expected]=entries[cursor++];const row=document.createElement('tr'),file=document.createElement('td'),state=document.createElement('td');file.textContent=name;state.textContent='檢查中';row.append(file,state);rows.append(row);
+   try{const bytes=await request(name);const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('');if(hash!==expected)throw new Error('與本版紀錄不同');state.textContent='一致';state.className='ok';ok++}catch(error){state.textContent=error.name==='AbortError'?'連線逾時':error.message;state.className='bad';bad++}done++;summary.textContent=manifest.version+'：已檢查 '+done+'/'+entries.length;
+  }}
+  await Promise.all(Array.from({length:4},worker));summary.textContent=manifest.version+'：'+ok+' 個一致，'+bad+' 個需要檢查。';summary.className=bad?'bad':'ok';
+ }catch(error){summary.textContent='無法檢查：'+error.message;summary.className='bad'}finally{button.disabled=false}
+};
+</script></body></html>

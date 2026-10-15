@@ -4,12 +4,14 @@ function mountNativeVideoFrames(page) {
   page.querySelectorAll(".day-content video").forEach(video => {
     const source=video.getAttribute("src") || video.querySelector("source[src]")?.getAttribute("src");
     if(!source)return;
-    const url=new URL("players/native-video.html",document.baseURI);
+    const url=new URL("players/native-video.html?v="+RELEASE_VERSION,document.baseURI);
     url.searchParams.set("src",new URL(source,document.baseURI).href);
     const poster=video.getAttribute("poster");
     if(poster)url.searchParams.set("poster",new URL(poster,document.baseURI).href);
     const title=video.getAttribute("aria-label") || "Journal video";
     url.searchParams.set("title",title);
+    const original=video.closest("section,figure")?.querySelector(".day-source a[href]")?.getAttribute("href");
+    if(original)url.searchParams.set("original",new URL(original,document.baseURI).href);
     const frame=document.createElement("iframe");
     frame.className="gack-native-player";
     frame.dataset.gackNativePlayer="1";
@@ -30,7 +32,10 @@ const dayRequests = new Map();
 function ensureDay(n) {
   if (dayPages.has(n)) return Promise.resolve(dayPages.get(n));
   if (dayRequests.has(n)) return dayRequests.get(n);
-  const request = fetch(DAY_FILES[n - 1], { cache: "no-cache" })
+  if(!Number.isInteger(n)||n<1||n>DAY_COUNT)return Promise.reject(new Error("Unknown DAY"));
+  const dayURL=new URL(DAY_FILES[n-1],document.baseURI);
+  dayURL.searchParams.set("v",RELEASE_VERSION);
+  const request = fetch(dayURL, { cache: "no-cache" })
     .then((response) => {
       if (!response.ok)
         throw new Error(`${DAY_FILES[n - 1]}: HTTP ${response.status}`);
@@ -46,19 +51,20 @@ function ensureDay(n) {
       template.innerHTML=html;
       mountNativeVideoFrames(template.content);
       page.append(template.content);
-      page.querySelector("#reset").onclick = () => {
-        items[day] = [];
+      const reset=page.querySelector("#reset");
+      if(reset)reset.onclick = () => {
+        items[n] = [];
         save();
         renderPlaced();
       };
-      page.querySelector("#return").onclick = () => {
+      const returnButton=page.querySelector("#return");
+      if(returnButton)returnButton.onclick = () => {
         sources.forEach((s) => (s.out = false));
         showSources();
       };
       content.append(page);
       dayPages.set(n, page);
-      if (page.querySelector("blockquote.twitter-tweet") && window.twttr?.widgets?.load)
-        window.twttr.widgets.load(page);
+      hydrateTwitterWidgets(page);
       return page;
     })
     .catch((error) => {

@@ -1,0 +1,3 @@
+/* Invisible introductory sidebar must not intercept the visible start button.
+   This changes hit testing only, not layout, opacity, or animation. */
+.stage:not(.open) .left{pointer-events:none}

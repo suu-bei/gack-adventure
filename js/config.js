@@ -1,6 +1,7 @@
+const RELEASE_VERSION = "V41";
 const SOURCES = [
-  "https://raw.githubusercontent.com/suu-bei/gack-adventure/refs/heads/main/images/sticker1.png",
-  "https://raw.githubusercontent.com/suu-bei/gack-adventure/refs/heads/main/images/sticker2.png",
+  "images/sticker1.png",
+  "images/sticker2.png",
 ];
 const DAY_COUNT = 4;
 const DAY_FILES = Array.from(
