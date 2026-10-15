@@ -15,8 +15,11 @@ function pauseDepartingDay(oldDay) {
           "https://www.youtube.com",
         );
       } catch (e) {}
-    } else if (/(?:platform|twitter|x)\.com|twimg\.com/.test(url)) {
-      // X does not expose a supported pause API. Unload only the departing
+    } else if (
+      /(?:platform|twitter|x)\.com|twimg\.com/.test(url) ||
+      /^https:\/\/drive\.google\.com\/file\/d\/[^/]+\/preview(?:[?#]|$)/.test(url)
+    ) {
+      // X and Drive have no pause API used here. Unload only the departing
       // player, then restore its URL when this DAY is shown again.
       if (!frame.dataset.gackOriginalSrc) frame.dataset.gackOriginalSrc = url;
       frame.setAttribute("src", "about:blank");

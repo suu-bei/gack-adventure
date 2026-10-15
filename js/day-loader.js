@@ -5,7 +5,7 @@ const dayRequests = new Map();
 function ensureDay(n) {
   if (dayPages.has(n)) return Promise.resolve(dayPages.get(n));
   if (dayRequests.has(n)) return dayRequests.get(n);
-  const request = fetch(DAY_FILES[n - 1])
+  const request = fetch(DAY_FILES[n - 1], { cache: "no-cache" })
     .then((response) => {
       if (!response.ok)
         throw new Error(`${DAY_FILES[n - 1]}: HTTP ${response.status}`);
@@ -28,8 +28,8 @@ function ensureDay(n) {
       };
       content.append(page);
       dayPages.set(n, page);
-      if (n === 1 && window.twttr?.widgets?.load)
-        window.twttr.widgets.load(page.querySelector(".x-embed-slot"));
+      if (page.querySelector("blockquote.twitter-tweet") && window.twttr?.widgets?.load)
+        window.twttr.widgets.load(page);
       return page;
     })
     .catch((error) => {
