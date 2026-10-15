@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Journal video player</title>
+<style>
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#151515}
+video{display:block;width:100%;height:100%;object-fit:contain;background:#151515}
+</style>
+</head>
+<body>
+<video id="player" controls playsinline preload="metadata"></video>
+<script>
+const params=new URLSearchParams(location.search);
+const player=document.getElementById('player');
+function mediaURL(value){
+  if(!value)return null;
+  try{const url=new URL(value,location.href);return ['https:','http:'].includes(url.protocol)?url.href:null}catch{return null}
+}
+const src=mediaURL(params.get('src'));
+const poster=mediaURL(params.get('poster'));
+player.setAttribute('aria-label',params.get('title')||'Journal video');
+if(poster)player.poster=poster;
+if(src){player.src=src;player.load()}
+window.addEventListener('message',event=>{
+  if(event.origin!==location.origin||event.source!==parent)return;
+  if(event.data?.type==='gack-native-video-pause')player.pause();
+});
+</script>
+</body>
+</html>
