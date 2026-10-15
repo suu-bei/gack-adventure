@@ -1,0 +1,22 @@
+/* V40 scoped integration styles. Branch B supplied the HTML but no stylesheet.
+   These rules apply only to .day-content; the V39 shell is unchanged. */
+.day-content{width:100%;min-width:0;color:#493a2c;overflow-wrap:anywhere}
+.day-content .day-block{margin:0 0 32px;min-width:0;max-width:100%}
+.day-content h3{font-size:21px;line-height:1.5;margin:0 0 16px}
+.day-content p{margin:0 0 16px;line-height:1.9}
+.day-content figure{margin:0 0 32px;min-width:0}
+.day-content figure img{display:block;width:100%;max-width:100%;height:auto}
+.day-content figcaption{font-size:13px;line-height:1.7;margin-top:10px;color:#796552}
+.day-content .day-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.day-content .day-columns>*{min-width:0}
+.day-content .day-columns figure{margin:0}
+.day-content .day-source{font-size:13px;margin:10px 0 0;line-height:1.7}
+.day-content a{color:#79502b}
+.day-content video{display:block;width:100%;max-width:100%;height:auto;background:#151515;object-fit:contain}
+.day-content .day-video,.day-content .day-drive-player{display:block;position:relative;width:100%;max-width:100%;height:auto;min-height:0;aspect-ratio:16/9;overflow:hidden;background:#151515}
+.day-content .day-video iframe,.day-content .day-drive-player iframe{display:block;position:absolute;inset:0;width:100%;max-width:100%;height:100%;border:0}
+@media(max-width:600px){
+ .day-content .day-columns{grid-template-columns:minmax(0,1fr);gap:18px}
+ .day-content h3{font-size:18px}
+ .day-content .day-block{margin-bottom:28px}
+}
