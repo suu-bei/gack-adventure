@@ -5,6 +5,24 @@
 <!-- 將本檔複製為 days/day01.html 等；路徑均以主站 index.html 為準。 -->
 <!-- 保留這行樣式載入；css/day-content.css 必須一起交給分支 C。 -->
 <link rel="stylesheet" href="css/day-content.css">
+<style>
+/* Drive mobile test: keep the iframe in normal document flow. */
+.day-content .day-drive-player.drive-mobile-test {
+  display:block; position:relative; width:100%; max-width:100%;
+  height:auto; min-height:0; aspect-ratio:auto; overflow:visible;
+  background:#151515;
+}
+.day-content .drive-mobile-test > iframe {
+  display:block; position:static; width:100%; max-width:100%;
+  height:auto; aspect-ratio:16/9; border:0; box-sizing:border-box;
+}
+@media (max-width:600px) {
+  .day-content .drive-mobile-test > iframe {
+    aspect-ratio:4/3; min-height:300px;
+  }
+}
+</style>
+
 
 <div class="day-content">
   <!-- 修改 DAY 數字；小標題可自行改文字，不必每一天都有相同段落。 -->
@@ -82,21 +100,21 @@
        將下方兩處 1JXzpGJHU76K_0W3MD8UVLJfUykf17NOq 改成新 ID 即可。
        iframe 的 title 請改成實際影片名稱；loading 與 allowfullscreen 請保留。
        iframe 使用 /preview，不是分享網址的 /view。
-       16:9 為此次測試外框，尚未確認來源影片的實際比例。
-       正式 DAY 使用下方行內樣式即可，不必修改主站 index.html。
+       桌面外框 16:9；手機使用較高外框測試控制列，不代表來源影片比例。
+       目前僅供 preview 測試；正式整合時需一起保留本頁 Drive 專用 CSS。
        給 C：現有 media.js 沒有 Drive 暫停處理，整合前需補上換日卸載／返回重載。
        請不要將 Drive 網頁網址直接放進 video 的 source。 -->
   <section class="day-block">
     <!-- 影片小標題可改名，不需要時刪除整行 h3。 -->
     <h3>Google Drive 影片（小標題可修改或刪除）</h3>
-    <div class="day-drive-player" style="position:relative;width:100%;aspect-ratio:16/9;min-height:240px;background:#151515">
+    <div class="day-drive-player drive-mobile-test">
       <iframe
         src="https://drive.google.com/file/d/1JXzpGJHU76K_0W3MD8UVLJfUykf17NOq/preview"
         title="Google Drive 影片"
         loading="lazy"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen
-        style="position:absolute;inset:0;display:block;width:100%;height:100%;border:0"
+        width="640" height="360"
       ></iframe>
     </div>
     <p class="day-source"><a href="https://drive.google.com/file/d/1JXzpGJHU76K_0W3MD8UVLJfUykf17NOq/view" target="_blank" rel="noopener noreferrer">在 Google Drive 觀看原始影片 ↗</a></p>
