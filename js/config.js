@@ -7,3 +7,6 @@ const DAY_FILES = Array.from(
   { length: DAY_COUNT },
   (_, i) => `days/day${String(i + 1).padStart(2, "0")}.html`,
 );
+
+// Refresh the released DAY01 once; mounted DAY DOM caching is unchanged.
+DAY_FILES[0] += "?v=39.1-day01";
