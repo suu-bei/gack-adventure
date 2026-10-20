@@ -17,12 +17,14 @@ function ensureDay(n) {
       page.dataset.day = n;
       page.hidden = true;
       page.innerHTML = html;
-      page.querySelector("#reset").onclick = () => {
+      const resetButton = page.querySelector("#reset");
+      if (resetButton) resetButton.onclick = () => {
         items[day] = [];
         save();
         renderPlaced();
       };
-      page.querySelector("#return").onclick = () => {
+      const returnButton = page.querySelector("#return");
+      if (returnButton) returnButton.onclick = () => {
         sources.forEach((s) => (s.out = false));
         showSources();
       };
