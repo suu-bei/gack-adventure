@@ -1,0 +1,45 @@
+/* V39.1 DAY01 integration: scoped styles from Branch B preview. */
+@font-face{
+ font-family:"Gack Pixel English";
+ src:url("../../../fonts/gack-pixel-english.ttf") format("truetype");
+ font-weight:400 700;
+ font-style:normal;
+ font-display:swap;
+ unicode-range:U+0000-024F,U+2000-206F;
+}
+
+/* DAY 1 readability update — 僅調整內容排版，所有圖文原文保留。 */
+.gack-day01{width:100%;min-width:0;color:#624831;font-family:"Gack Pixel English",Georgia,serif;font-size:20px;line-height:1.85;overflow-wrap:break-word;word-break:normal;hyphens:none;text-align:left}
+.gack-day01 *{box-sizing:border-box}
+.gack-day01 h2{font-family:inherit;font-size:38px;font-weight:700;line-height:1.25;letter-spacing:.04em;text-align:center;color:#694b32;margin:0 0 42px}
+.gack-day01 p{font:inherit;line-height:1.85;margin:0;white-space:normal;word-break:normal;overflow-wrap:break-word;hyphens:none}
+.gack-day01 .gack-day01__opener,.gack-day01 .gack-day01__summary{width:100%;max-width:650px;margin:0 auto 48px;padding:10px 0 10px 22px;border-left:3px solid #997853;color:#74593e}
+.gack-day01 .gack-day01__summary{margin:18px auto 0}
+.gack-day01 .gack-day01__intro{max-width:640px;margin:0 auto 58px}
+/* 取消窄雙欄。長段落使用完整閱讀寬度，避免每行只放少數單字。 */
+.gack-day01 .gack-day01__story{position:relative;display:flex;flex-direction:column;gap:24px;align-items:stretch;max-width:690px;margin:0 auto 64px;padding-top:34px;border-top:1px solid #9b79412e}
+.gack-day01 .gack-day01__copy{order:2;min-width:0;width:100%;max-width:640px;margin:0 auto}
+.gack-day01 figure{order:1;min-width:0;width:100%;max-width:540px;margin:0 auto}
+.gack-day01 img{display:block;width:100%;max-width:100%;height:auto;border:1px solid #826440;box-shadow:2px 3px 0 #6f4d2626}
+.gack-day01 .gack-day01__story--wide figure{max-width:690px}
+/* 近正方形的截圖保持適中尺寸，不因單欄而放得過大。 */
+.gack-day01 [data-source-row="6"] figure,.gack-day01 [data-source-row="9"] figure,.gack-day01 [data-source-row="10"] figure{max-width:460px}
+@media(max-width:700px){
+ .gack-day01{font-size:19px;line-height:1.8}
+ .gack-day01 h2{font-size:34px;margin-bottom:30px}
+ .gack-day01 p{line-height:1.8}
+ .gack-day01 .gack-day01__opener,.gack-day01 .gack-day01__summary{padding:6px 0 6px 15px;border-left-width:3px;margin-bottom:36px}
+ .gack-day01 .gack-day01__summary{margin-top:12px;margin-bottom:0}
+ .gack-day01 .gack-day01__intro{margin-bottom:42px}
+ .gack-day01 .gack-day01__story{gap:20px;margin-bottom:46px;padding-top:28px}
+ .gack-day01 figure,.gack-day01 .gack-day01__copy{max-width:100%}
+}
+
+/* Paper background is shared by all DAYs in css/journal-paper.css. */
+
+/* DAY01 Drive player: extra room for mobile playback controls. */
+@media (max-width:600px) {
+  .gack-day01 iframe[title="Got jumpscared by pumpkin"] {
+    min-height:280px;
+  }
+}
