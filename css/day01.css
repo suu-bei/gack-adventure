@@ -58,3 +58,10 @@
     box-shadow:0 12px 24px #0007;
   }
 }
+
+/* DAY01 Drive player: extra room for mobile playback controls. */
+@media (max-width:600px) {
+  .gack-day01 iframe[title="Got jumpscared by pumpkin"] {
+    min-height:280px;
+  }
+}
