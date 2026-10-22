@@ -1,0 +1,30 @@
+/* Shared parchment for every DAY. Applies to current and future DAY01–DAY15.
+   Keep DAY files concerned with article content; do not add paper overrides there.
+   To replace the artwork, edit --journal-paper-image below (or replace its PNG).
+   Desktop folds .paper::before; Mobile flips each .day-page. Do not move the
+   background onto the scrolling content element or change those animation layers. */
+:root {
+  --journal-paper-image: url("../images/scroll-paper-tile.png");
+  --journal-paper-color: #e4c297;
+  --journal-paper-background: var(--journal-paper-color) var(--journal-paper-image) center top / 100% auto repeat-y;
+  --journal-paper-desktop-shadow: 0 15px 40px #0008;
+  --journal-paper-mobile-shadow: 0 12px 24px #0007;
+}
+@media (min-width:601px) {
+  .paper::before {
+    background: var(--journal-paper-background);
+    box-shadow: var(--journal-paper-desktop-shadow);
+  }
+}
+@media (max-width:600px) {
+  /* Static back sheets use the same artwork and color as the foreground. */
+  .stage.open .reader .paper::before,
+  .stage.open .reader .paper::after {
+    background: var(--journal-paper-background);
+  }
+  .stage.open .reader .day-page {
+    background: var(--journal-paper-background);
+    box-shadow: var(--journal-paper-mobile-shadow);
+  }
+}
+
