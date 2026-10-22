@@ -35,26 +35,4 @@
  .gack-day01 figure,.gack-day01 .gack-day01__copy{max-width:100%}
 }
 
-/* DAY01 pixel paper: use the original preview asset on the host paper layer.
-   Desktop retains .paper::before and its existing folding animation.
-   Mobile keeps each DAY as an independently scrolling card. */
-@media (min-width:601px) {
-  .paper:has(.day-page[data-day="1"]:not([hidden]))::before {
-    background-color:#e4c297;
-    background-image:url("../images/scroll-paper-tile.png");
-    background-repeat:repeat-y;
-    background-position:center top;
-    background-size:100% auto;
-    box-shadow:0 15px 40px #0008;
-  }
-}
-@media (max-width:600px) {
-  .stage.open .reader .day-page[data-day="1"]:has(> .gack-day01) {
-    background-color:#e4c297;
-    background-image:url("../images/scroll-paper-tile.png");
-    background-repeat:repeat-y;
-    background-position:center top;
-    background-size:100% auto;
-    box-shadow:0 12px 24px #0007;
-  }
-}
+/* Paper background is shared by all DAYs in css/journal-paper.css. */
