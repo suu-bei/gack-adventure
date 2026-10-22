@@ -177,19 +177,28 @@ document.querySelector("#mobileNext").addEventListener("click", () => {
 document.querySelector("#start").onclick = openJournal;
 document.querySelector("#chestZone").addEventListener("click", openJournal);
 document.querySelector("#chestHit").addEventListener("pointerup", openJournal);
+// Resize/fullscreen can animate the chest for .85s after the event fires.
+// Share one tracking loop: repeated events extend its deadline rather than
+// leaving source stickers at an intermediate chest position.
+let chestFollowUntil = 0;
+let chestFollowFrame = 0;
 function followChestDuringTransition(duration) {
-  // Stickers live in layout coordinates, while the chest animates in its own layer.
-  // Track the chest's *actual rendered position* every frame, avoiding a late teleport.
-  const started = performance.now();
+  chestFollowUntil = Math.max(chestFollowUntil, performance.now() + duration);
+  if (chestFollowFrame) return;
   function frame(now) {
     showSources();
-    if (now - started < duration) requestAnimationFrame(frame);
+    if (now < chestFollowUntil) chestFollowFrame = requestAnimationFrame(frame);
+    else chestFollowFrame = 0;
   }
-  requestAnimationFrame(frame);
+  chestFollowFrame = requestAnimationFrame(frame);
 }
 window.addEventListener("resize", () => {
-  showSources();
+  followChestDuringTransition(1100);
   renderPlaced();
   refreshPlacedPositions();
 });
+// Some embedded players report fullscreen changes without a window resize.
+document.addEventListener("fullscreenchange", () => followChestDuringTransition(1100));
+document.addEventListener("webkitfullscreenchange", () => followChestDuringTransition(1100));
 scroll.addEventListener("scroll", refreshPlacedPositions, { passive: true });
+
