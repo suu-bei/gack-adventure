@@ -1,0 +1,15 @@
+/* R7: shared article copy only. Keep Scene 1, headings and menu fonts unchanged. */
+@font-face {
+  font-family:'Cubic 11';
+  src:url('../fonts/cubic11/Cubic_11.woff2') format('woff2');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+:root {
+  --journal-copy-font:'Cubic 11','Noto Sans TC',sans-serif;
+}
+.stage.open .reader .day-page :is(p,li,blockquote,figcaption,td,th),
+.stage.open .reader .day-page :is(p,li,blockquote,figcaption,td,th) :is(a,span,strong,em,b,i,small) {
+  font-family:var(--journal-copy-font);
+}
