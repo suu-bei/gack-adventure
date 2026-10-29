@@ -1,4 +1,4 @@
-// V35: mobile navigation. The actual demo currently contains DAY 1–4.
+// Mobile navigation: total calendar slots and available articles are configured separately.
 const gackMenuToggle = document.getElementById("gackMenuToggle");
 const gackMenuShade = document.getElementById("gackMenuShade");
 const gackMenuSheet = document.getElementById("gackMenuSheet");
@@ -27,7 +27,7 @@ document
   .querySelectorAll("[data-gack-back]")
   .forEach((b) => (b.onclick = () => gackMenuView("home")));
 const gackIndexGrid = document.getElementById("gackIndexGrid");
-for (let n = 1; n <= 15; n++) {
+for (let n = 1; n <= TOTAL_DAY_COUNT; n++) {
   const b = document.createElement("button");
   b.type = "button";
   b.className = "gack-index-button";
@@ -64,3 +64,4 @@ swipeArea.addEventListener("touchstart", hideGackSwipeHint, { passive: true });
 document.addEventListener("keydown", (ev) => {
   if (ev.key === "Escape") gackMenuSet(false);
 });
+
