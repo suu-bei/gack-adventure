@@ -71,3 +71,10 @@
   :is(.day-journal,.gack-day01) :is(.day-summary,.gack-day01__summary) {margin:12px auto 0}
   :is(.day-journal,.gack-day01) :is(.day-opener,.day-summary,.gack-day01__opener,.gack-day01__summary)::before {font-size:11px;letter-spacing:.07em;margin-bottom:15px}
 }
+
+/* DAY02 Drive player: room for mobile playback controls, matching DAY01. */
+@media (max-width:600px) {
+  .day-page[data-day="2"] .day-media iframe[title="Flying rock"] {
+    min-height:280px;
+  }
+}
