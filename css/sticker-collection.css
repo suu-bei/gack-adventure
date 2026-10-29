@@ -71,3 +71,4 @@
 /* Iframes must not swallow pointer release while a sticker crosses a player. */
 @media(min-width:601px){html.sticker-is-dragging .paper iframe{pointer-events:none!important}}
 
+
