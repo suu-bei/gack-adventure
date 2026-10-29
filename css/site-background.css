@@ -1,0 +1,40 @@
+/* R9.1: shared background only. The photograph remains unmodified. */
+:root {
+  --site-bg-image:url('../images/site-background.jpg');
+  --site-bg-position:50% 50%;
+  --site-bg-blur:3px;
+  --site-bg-intro-shade:.42;
+  --site-bg-reader-shade:.42;
+}
+.stage {
+  isolation:isolate;
+  background:#141318;
+  --site-bg-shade:var(--site-bg-intro-shade);
+}
+.stage.open {--site-bg-shade:var(--site-bg-reader-shade)}
+.stage::before {
+  content:'';
+  position:fixed;
+  inset:-8px;
+  z-index:-2;
+  pointer-events:none;
+  opacity:1;
+  background-image:var(--site-bg-image);
+  background-position:var(--site-bg-position);
+  background-size:cover;
+  background-repeat:no-repeat;
+  filter:blur(var(--site-bg-blur));
+}
+.stage::after {
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-color:rgb(0 0 0 / var(--site-bg-shade));
+  background-image:radial-gradient(ellipse at 50% 40%,transparent 25%,rgb(0 0 0 / .24) 100%);
+  transition:background-color .45s ease;
+}
+@media(prefers-reduced-motion:reduce) {
+  .stage::after {transition:none}
+}

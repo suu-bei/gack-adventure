@@ -1,0 +1,73 @@
+/* Approved shared journal layout. Load after existing DAY and typography CSS.
+   Generic B template: day-journal / day-title / day-opener / day-copy / day-summary.
+   Existing DAY01 classes remain supported without editing its article HTML. */
+@font-face {
+  font-family:'Journal Pixel Label';
+  src:url('../fonts/gack-pixel-english.ttf') format('truetype');
+  font-weight:400 700;font-style:normal;font-display:swap;
+}
+:root {
+  --journal-section-color:rgba(121,91,56,.14);
+  --journal-section-ink:#796455;
+  --journal-section-accent:#765333;
+  --journal-section-inset:28px;
+}
+.day-journal {
+  width:100%;min-width:0;color:#624831;
+  font:400 20px/1.85 'Cubic 11','Noto Sans TC',sans-serif;
+  overflow-wrap:break-word;word-break:normal;hyphens:none;text-align:left;
+}
+.day-journal * {box-sizing:border-box}
+.day-journal p {font:inherit;line-height:inherit;margin:0}
+.day-journal p+p {margin-top:24px}
+:is(.day-journal,.gack-day01) :is(.day-opener,.day-summary,.gack-day01__opener,.gack-day01__summary) {
+  box-sizing:border-box;width:100%;max-width:650px;margin:0 auto 48px;
+  padding:26px var(--journal-section-inset) 28px;
+  border:0;border-radius:0;box-shadow:none;
+  background-color:var(--journal-section-color);
+  background-image:repeating-linear-gradient(to bottom,rgba(121,91,56,.48) 0 4px,transparent 4px 7px);
+  background-position:left top;background-size:2px 100%;background-repeat:no-repeat;
+  color:var(--journal-section-ink);
+}
+:is(.day-journal,.gack-day01) :is(.day-summary,.gack-day01__summary) {margin:18px auto 0}
+:is(.day-journal,.gack-day01) :is(.day-opener,.day-summary,.gack-day01__opener,.gack-day01__summary)::before {
+  display:block;margin-bottom:18px;
+  font:400 13px/1.7 'Journal Pixel Label',monospace;
+  letter-spacing:.1em;color:var(--journal-section-accent);
+}
+:is(.day-journal,.gack-day01) :is(.day-opener,.gack-day01__opener)::before {content:'THE ADVENTURE BEGINS'}
+:is(.day-journal,.gack-day01) :is(.day-summary,.gack-day01__summary)::before {content:'DAY’S END'}
+:is(.day-journal,.gack-day01) :is(.day-summary,.gack-day01__summary)::after {
+  content:'';display:block;width:64px;height:9px;margin:22px auto 0;
+  background:center/64px 9px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='9' viewBox='0 0 64 9'%3E%3Cpath fill='%23836443' d='M10 0h3v3h3v3h-3v3h-3V6H7V3h3zM30 0h3v3h3v3h-3v3h-3V6h-3V3h3zM50 0h3v3h3v3h-3v3h-3V6h-3V3h3z'/%3E%3C/svg%3E");
+}
+:is(.day-journal,.gack-day01) :is(.day-copy,.gack-day01__intro,.gack-day01__copy) {
+  box-sizing:border-box;width:100%;max-width:650px;margin-left:auto;margin-right:auto;
+  padding-left:var(--journal-section-inset);padding-right:var(--journal-section-inset);
+}
+.day-journal>.day-copy {margin-bottom:48px}
+/* Blank title decorations are reserved with CSS; no new DAY markup is required. */
+:is(.day-journal,.gack-day01)>h2 {
+  display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  align-items:center;gap:12px;
+  font-family:'Journal Pixel Label',monospace;
+}
+.day-journal>.day-title {font-size:38px;font-weight:700;line-height:1.25;letter-spacing:.04em;text-align:center;color:#694b32;margin:0 0 42px}
+:is(.day-journal,.gack-day01)>h2::before,
+:is(.day-journal,.gack-day01)>h2::after {
+  content:'';display:block;width:100%;max-width:140px;height:32px;justify-self:center;
+  background-position:center;background-size:contain;background-repeat:no-repeat;image-rendering:pixelated;
+}
+:is(.day-journal,.gack-day01)>h2::before {background-image:var(--day-title-decoration-left,none)}
+:is(.day-journal,.gack-day01)>h2::after {background-image:var(--day-title-decoration-right,none)}
+.day-journal>.day-media {width:100%;max-width:690px;margin:0 auto 24px}
+.day-journal .day-media img {display:block;width:100%;height:auto;max-width:100%}
+.day-journal .day-media video {display:block;width:100%;height:auto;max-width:100%}
+@media(max-width:700px) {
+  :root {--journal-section-inset:20px}
+  .day-journal {font-size:19px;line-height:1.8}
+  .day-journal>.day-title {font-size:34px;margin-bottom:30px}
+  :is(.day-journal,.gack-day01) :is(.day-opener,.day-summary,.gack-day01__opener,.gack-day01__summary) {padding:20px var(--journal-section-inset) 22px;margin-bottom:36px}
+  :is(.day-journal,.gack-day01) :is(.day-summary,.gack-day01__summary) {margin:12px auto 0}
+  :is(.day-journal,.gack-day01) :is(.day-opener,.day-summary,.gack-day01__opener,.gack-day01__summary)::before {font-size:11px;letter-spacing:.07em;margin-bottom:15px}
+}

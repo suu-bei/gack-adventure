@@ -1,0 +1,49 @@
+/* R6: Scene 2 branding and menu typography only. */
+@font-face {
+  font-family:'Gack Interface Pixel';
+  src:url('../fonts/gack-pixel-english.ttf') format('truetype');
+  font-weight:400 700;
+  font-style:normal;
+  font-display:swap;
+}
+.stage.open .brand {
+  font-family:'Gack Interface Pixel',monospace;
+  font-size:26px;
+  font-weight:400;
+  line-height:1.2;
+  white-space:nowrap;
+  letter-spacing:0;
+}
+.stage.open .brand::before { content:none; }
+.scene2-logo {
+  display:block;
+  width:min(200px,85%);
+  height:auto;
+  margin:0 auto 14px;
+  object-fit:contain;
+}
+.scene2-title { display:block; white-space:nowrap; }
+.gack-menu-sheet,.gack-menu-sheet *,
+.stage.open .days.adventure-log,.stage.open .days.adventure-log * {
+  font-family:'Gack Interface Pixel',monospace;
+}
+@media (min-width:601px) and (max-width:850px) {
+  .stage.open .brand {font-size:clamp(14px,2.4vw,20px)}
+  .scene2-logo {margin-bottom:10px}
+}
+@media (max-width:600px) {
+  .stage.open .left {top:12px!important}
+  .stage.open .brand {font-size:clamp(18px,5.5vw,28px);line-height:1.2;margin:0}
+  .stage.open .brand::before {content:none}
+  .scene2-logo {width:min(140px,calc(100vw - 150px));margin:0 auto 10px}
+}
+
+/* Shared 16-day calendar: four columns, four rows. */
+@media(min-width:601px){
+ .adventure-log .log-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+.gack-menu-sheet #gackMenuHome .gack-index-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:360px){
+ .gack-menu-sheet .gack-index-button{font-size:11px}
+}
+
