@@ -37,3 +37,13 @@
   .stage.open .brand::before {content:none}
   .scene2-logo {width:min(140px,calc(100vw - 150px));margin:0 auto 10px}
 }
+
+/* Shared 16-day calendar: four columns, four rows. */
+@media(min-width:601px){
+ .adventure-log .log-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+.gack-menu-sheet #gackMenuHome .gack-index-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:360px){
+ .gack-menu-sheet .gack-index-button{font-size:11px}
+}
+
