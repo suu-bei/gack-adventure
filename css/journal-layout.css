@@ -7,9 +7,9 @@
   font-weight:400 700;font-style:normal;font-display:swap;
 }
 :root {
-  --journal-section-color:#645143;
-  --journal-section-ink:#f4e7d3;
-  --journal-section-accent:#edc58d;
+  --journal-section-color:rgba(121,91,56,.14);
+  --journal-section-ink:#796455;
+  --journal-section-accent:#765333;
   --journal-section-inset:28px;
 }
 .day-journal {
@@ -24,7 +24,10 @@
   box-sizing:border-box;width:100%;max-width:650px;margin:0 auto 48px;
   padding:26px var(--journal-section-inset) 28px;
   border:0;border-radius:0;box-shadow:none;
-  background:var(--journal-section-color);color:var(--journal-section-ink);
+  background-color:var(--journal-section-color);
+  background-image:repeating-linear-gradient(to bottom,rgba(121,91,56,.48) 0 4px,transparent 4px 7px);
+  background-position:left top;background-size:2px 100%;background-repeat:no-repeat;
+  color:var(--journal-section-ink);
 }
 :is(.day-journal,.gack-day01) :is(.day-summary,.gack-day01__summary) {margin:18px auto 0}
 :is(.day-journal,.gack-day01) :is(.day-opener,.day-summary,.gack-day01__opener,.gack-day01__summary)::before {
@@ -36,7 +39,7 @@
 :is(.day-journal,.gack-day01) :is(.day-summary,.gack-day01__summary)::before {content:'DAY’S END'}
 :is(.day-journal,.gack-day01) :is(.day-summary,.gack-day01__summary)::after {
   content:'';display:block;width:64px;height:9px;margin:22px auto 0;
-  background:center/64px 9px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='9' viewBox='0 0 64 9'%3E%3Cpath fill='%23dfb77f' d='M10 0h3v3h3v3h-3v3h-3V6H7V3h3zM30 0h3v3h3v3h-3v3h-3V6h-3V3h3zM50 0h3v3h3v3h-3v3h-3V6h-3V3h3z'/%3E%3C/svg%3E");
+  background:center/64px 9px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='9' viewBox='0 0 64 9'%3E%3Cpath fill='%23836443' d='M10 0h3v3h3v3h-3v3h-3V6H7V3h3zM30 0h3v3h3v3h-3v3h-3V6h-3V3h3zM50 0h3v3h3v3h-3v3h-3V6h-3V3h3z'/%3E%3C/svg%3E");
 }
 :is(.day-journal,.gack-day01) :is(.day-copy,.gack-day01__intro,.gack-day01__copy) {
   box-sizing:border-box;width:100%;max-width:650px;margin-left:auto;margin-right:auto;
