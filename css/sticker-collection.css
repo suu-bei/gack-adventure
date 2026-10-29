@@ -26,7 +26,7 @@
  .sticker-reset:hover:not(:disabled){background:#735133}.sticker-reset:disabled{opacity:.6;cursor:default}
  .placed-layer{clip-path:inset(var(--sticker-clip-top,29px) 0 var(--sticker-clip-bottom,29px) 0);overflow:hidden;pointer-events:none;z-index:5}
  .placed-sticker{position:absolute;pointer-events:auto;touch-action:none;cursor:grab;user-select:none;outline:none;z-index:1}
- .placed-sticker .sticker-art{display:block;width:100%;height:100%;object-fit:contain;user-select:none;pointer-events:none;max-width:none;filter:drop-shadow(1px 0 #fff) drop-shadow(-1px 0 #fff) drop-shadow(0 1px #fff) drop-shadow(0 -1px #fff) drop-shadow(0 3px 3px #0004)}
+ .placed-sticker .sticker-art{display:block;width:100%;height:100%;object-fit:contain;user-select:none;pointer-events:none;max-width:none;filter:drop-shadow(3px 0 #fff) drop-shadow(-3px 0 #fff) drop-shadow(0 3px #fff) drop-shadow(0 -3px #fff) drop-shadow(0 3px 3px #0004)}
  .placed-sticker.is-selected{outline:1px dashed #916122;outline-offset:2px;z-index:2}
  .placed-sticker.is-dragging{cursor:grabbing;z-index:10}
  .sticker-resize{display:none;position:absolute;width:18px;height:18px;right:0;bottom:0;border:2px solid #fff1cf;background:#a77435;box-shadow:0 0 0 1px #573b22;cursor:nwse-resize;padding:0;touch-action:none}
@@ -70,3 +70,4 @@
 
 /* Iframes must not swallow pointer release while a sticker crosses a player. */
 @media(min-width:601px){html.sticker-is-dragging .paper iframe{pointer-events:none!important}}
+
