@@ -1,0 +1,27 @@
+/* Companion to the approved calendar layout. Load after chest-art.css.
+   Only collection presentation; no drag, size, persistence or reset changes. */
+@media (min-width:601px) {
+  #stickerHome .sticker-collection {
+    --catalog-cell:48px;
+    height:198px;
+    max-height:var(--collection-available-height,198px);
+  }
+  #stickerHome .sticker-catalog-grid {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-auto-rows:48px;
+    gap:6px;
+  }
+  #stickerHome .sticker-slot {padding:4px}
+  #stickerHome .sticker-collection-heading {height:30px}
+  #stickerHome .sticker-catalog-scroll {
+    height:calc(100% - 50px);
+    padding:8px 6px 8px 8px;
+    scrollbar-width:thin;
+    scrollbar-color:#e8c98a80 transparent;
+  }
+  #stickerHome .sticker-catalog-scroll::-webkit-scrollbar {width:5px;background:transparent}
+  #stickerHome .sticker-catalog-scroll::-webkit-scrollbar-track {background:transparent}
+  #stickerHome .sticker-catalog-scroll::-webkit-scrollbar-thumb {background:#e8c98a80;border-radius:0}
+  #stickerHome .sticker-catalog-scroll:hover {scrollbar-color:#e8c98acc transparent}
+  #stickerHome .sticker-catalog-scroll:hover::-webkit-scrollbar-thumb {background:#e8c98acc}
+}
