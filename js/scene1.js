@@ -30,6 +30,25 @@
       for (const key of ['transition','left','top','width','height','transform']) chestEl.style.removeProperty(key);
     });
   }
+  const homeLink = document.querySelector('.scene2-home-link');
+  if (homeLink) homeLink.addEventListener('click', event => {
+    event.preventDefault();
+    if (!opened || switching) return;
+    cancelStickerDrag();
+    pauseDepartingDay(day);
+    hideFloating();
+    hideGackSwipeHint();
+    gackMenuSet(false);
+    document.querySelector('.sticker-collection')?.classList.remove('is-collection-expanded');
+    opened = false;
+    stageEl.classList.remove('open');
+    // Restore normal-flow positioning and allow the next opening to prepare again.
+    group.appendChild(chestEl);
+    prepared = false;
+    for (const key of ['transition','left','top','width','height','transform'])
+      chestEl.style.removeProperty(key);
+    document.getElementById('chestHit')?.focus({preventScroll:true});
+  });
   document.addEventListener('click', prepareChest, true);
   document.addEventListener('pointerup', prepareChest, true);
 })();

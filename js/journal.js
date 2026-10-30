@@ -89,6 +89,7 @@ function updateDay(n) {
 }
 function openJournal() {
   if (opened) return;
+  restoreDayMedia(day);
   opened = true;
   stage.classList.add("open");
   followChestDuringTransition(1100);
