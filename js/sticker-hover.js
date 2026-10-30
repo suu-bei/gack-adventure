@@ -4,7 +4,10 @@
   const panel=document.querySelector('#stickerHome .sticker-collection');
   if(!panel)return;
   let hover=false,keyboard=false,timer=0;
-  const dragging=()=>document.documentElement.classList.contains('sticker-is-dragging');
+  // Only source drags from the collection keep it open. Moving/resizing a
+  // sticker already on the paper must not expand the collection.
+  const dragging=()=>typeof drag!=='undefined'&&drag?.kind==='source'&&
+    document.documentElement.classList.contains('sticker-is-dragging');
   function expand(){clearTimeout(timer);panel.classList.add('is-collection-expanded');}
   function collapseSoon(){
     clearTimeout(timer);
