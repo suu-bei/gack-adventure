@@ -1,11 +1,12 @@
 /* Scene 2 decoration only. No link, button, focus target or click action. */
 .scene2-credits-mark {display:none}
 @media (min-width:601px) {
-  #stage.open ~ .scene2-credits-mark {
+  #stage.open .reader > .scene2-credits-mark {
     display:flex;
-    position:fixed;
-    right:max(24px,env(safe-area-inset-right,0px));
-    bottom:max(24px,env(safe-area-inset-bottom,0px));
+    position:absolute;
+    left:calc(100% + 32px);
+    bottom:0;
+    width:48px;
     flex-direction:column;
     align-items:center;
     gap:6px;
@@ -31,4 +32,15 @@
     letter-spacing:1px;
     text-shadow:1px 2px #21170e;
   }
+}
+
+/* Reserve room beside the scroll, including its wooden roller overhang. */
+@media (min-width:601px) and (max-width:850px) {
+  .stage.open .reader {width:calc(66% - 96px)}
+}
+@media (min-width:851px) and (max-width:1099px) {
+  .stage.open .reader {width:calc(62% - 96px)}
+}
+@media (min-width:1100px) {
+  .stage.open .reader {max-width:calc(100% - 454px)}
 }
