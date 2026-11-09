@@ -1,5 +1,6 @@
 /* Approved shared journal layout. Load after existing DAY and typography CSS.
    Generic B template: day-journal / day-title / day-opener / day-copy / day-summary.
+   Use a day-story section to group each story's media and copy in either order.
    Existing DAY01 classes remain supported without editing its article HTML. */
 @font-face {
   font-family:'Journal Pixel Label';
@@ -11,6 +12,8 @@
   --journal-section-ink:#796455;
   --journal-section-accent:#765333;
   --journal-section-inset:28px;
+  --journal-story-divider:1px dashed #9b79414d;
+  --journal-story-divider-inset:28px;
 }
 .day-journal {
   width:100%;min-width:0;color:#624831;
@@ -46,6 +49,18 @@
   padding-left:var(--journal-section-inset);padding-right:var(--journal-section-inset);
 }
 .day-journal>.day-copy {margin-bottom:48px}
+.day-journal>.day-story {width:100%;max-width:690px;margin:0 auto 48px}
+
+/* Legacy flat articles put one or more media blocks before their matching copy.
+   Start the divider at the first block after completed copy, never inside a group.
+   DAY01 already has a border on this element; replace it rather than adding one. */
+.gack-day01>.gack-day01__story,
+.day-journal>:is(.day-opener,.day-copy,.day-story)+:is(.day-story,.day-media,.gack-photo-gallery,.day-copy,.day-summary) {
+  border-top:var(--journal-story-divider);
+}
+.day-journal>:is(.day-opener,.day-copy,.day-story)+:is(.day-story,.day-media,.gack-photo-gallery,.day-copy) {
+  padding-top:var(--journal-story-divider-inset);
+}
 /* Blank title decorations are reserved with CSS; no new DAY markup is required. */
 :is(.day-journal,.gack-day01)>h2 {
   display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
@@ -60,11 +75,11 @@
 }
 :is(.day-journal,.gack-day01)>h2::before {background-image:var(--day-title-decoration-left,none)}
 :is(.day-journal,.gack-day01)>h2::after {background-image:var(--day-title-decoration-right,none)}
-.day-journal>.day-media {width:100%;max-width:690px;margin:0 auto 24px}
+:is(.day-journal,.day-journal>.day-story)>.day-media {width:100%;max-width:690px;margin:0 auto 24px}
 .day-journal .day-media img {display:block;width:100%;height:auto;max-width:100%}
 .day-journal .day-media video {display:block;width:100%;height:auto;max-width:100%}
 @media(max-width:700px) {
-  :root {--journal-section-inset:20px}
+  :root {--journal-section-inset:20px;--journal-story-divider-inset:22px}
   .day-journal {font-size:19px;line-height:1.8}
   .day-journal>.day-title {font-size:34px;margin-bottom:30px}
   :is(.day-journal,.gack-day01) :is(.day-opener,.day-summary,.gack-day01__opener,.gack-day01__summary) {padding:20px var(--journal-section-inset) 22px;margin-bottom:36px}
