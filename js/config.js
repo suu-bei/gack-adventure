@@ -4,8 +4,8 @@ const SOURCES = [
 ];
 // Planned calendar slots; shared by desktop and mobile menus.
 const TOTAL_DAY_COUNT = 16;
-// Published, consecutive DAY files. Increase only after B/C add the articles.
-const DAY_COUNT = 4;
+// Every calendar slot has a page, including rest days and content placeholders.
+const DAY_COUNT = TOTAL_DAY_COUNT;
 const DAY_FILES = Array.from(
   { length: DAY_COUNT },
   (_, i) => `days/day${String(i + 1).padStart(2, "0")}.html`,

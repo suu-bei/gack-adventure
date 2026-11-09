@@ -1,10 +1,6 @@
-/* Calendar status only; does not publish or unlock DAY content.
-   C: enter confirmed rest days here. Example: restDays: [5, 8].
-   An empty list means no rest dates have been confirmed yet.
-   Add the normal days/dayXX.html with its rest-day PNG via B/C before
-   increasing DAY_COUNT. Never copy the preview's demonstration dates. */
+/* Calendar status and icon assets. Rest-day pages live in days/dayXX.html. */
 window.GACK_CALENDAR_SETTINGS = {
-  restDays: [],
+  restDays: [5, 8, 10, 13],
   liveIcon: 'images/calendar/live.png',
   restIcon: 'images/calendar/rest.png',
 };
