@@ -1,0 +1,48 @@
+/* FSFables shared pixel controls. Visual styles only; no gesture or click changes. */
+:is(.gack-menu-toggle,[data-pixel-icon="menu"]){--gack-control-icon:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20shape-rendering%3D%22crispEdges%22%3E%3Cpath%20d%3D%22M2%202h1v1h-1zM2%205h1v1h-1zM2%208h1v1h-1zM3%202h1v1h-1zM3%205h1v1h-1zM3%208h1v1h-1zM4%202h1v1h-1zM4%205h1v1h-1zM4%208h1v1h-1zM5%202h1v1h-1zM5%205h1v1h-1zM5%208h1v1h-1zM6%202h1v1h-1zM6%205h1v1h-1zM6%208h1v1h-1zM7%202h1v1h-1zM7%205h1v1h-1zM7%208h1v1h-1zM8%202h1v1h-1zM8%205h1v1h-1zM8%208h1v1h-1zM9%202h1v1h-1zM9%205h1v1h-1zM9%208h1v1h-1z%22%2F%3E%3C%2Fsvg%3E")}
+:is(.gack-menu-close,.credits-window .credits-close,.gack-gallery-viewer button[aria-label="Close photo viewer"],[data-pixel-icon="close"]){--gack-control-icon:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20shape-rendering%3D%22crispEdges%22%3E%3Cpath%20d%3D%22M2%202h1v1h-1zM2%209h1v1h-1zM3%203h1v1h-1zM3%208h1v1h-1zM4%204h1v1h-1zM4%207h1v1h-1zM5%205h1v1h-1zM5%206h1v1h-1zM6%205h1v1h-1zM6%206h1v1h-1zM7%204h1v1h-1zM7%207h1v1h-1zM8%203h1v1h-1zM8%208h1v1h-1zM9%202h1v1h-1zM9%209h1v1h-1z%22%2F%3E%3C%2Fsvg%3E")}
+:is(#mobilePrev,.gack-gallery-viewer button[aria-label="Previous photo"],[data-pixel-icon="left"]){--gack-control-icon:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20shape-rendering%3D%22crispEdges%22%3E%3Cpath%20d%3D%22M3%205h1v1h-1zM4%204h1v1h-1zM4%206h1v1h-1zM5%203h1v1h-1zM5%207h1v1h-1zM6%202h1v1h-1zM6%208h1v1h-1zM7%201h1v1h-1zM7%209h1v1h-1z%22%2F%3E%3C%2Fsvg%3E")}
+:is(#mobileNext,.gack-gallery-viewer button[aria-label="Next photo"],[data-pixel-icon="right"]){--gack-control-icon:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20shape-rendering%3D%22crispEdges%22%3E%3Cpath%20d%3D%22M4%201h1v1h-1zM4%209h1v1h-1zM5%202h1v1h-1zM5%208h1v1h-1zM6%203h1v1h-1zM6%207h1v1h-1zM7%204h1v1h-1zM7%206h1v1h-1zM8%205h1v1h-1z%22%2F%3E%3C%2Fsvg%3E")}
+
+:is(.gack-menu-toggle,.gack-menu-close,#mobilePrev,#mobileNext,.gack-menu-back,[data-pixel-frame]) {
+  box-sizing:border-box;
+  border:4px solid #946e47;
+  border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20shape-rendering%3D%22crispEdges%22%3E%3Cpath%20fill%3D%22%23946e47%22%20d%3D%22M4%200H8V1H10V2H11V4H12V8H11V10H10V11H8V12H4V11H2V10H1V8H0V4H1V2H2V1H4Z%22%2F%3E%3Cpath%20fill%3D%22%23e9cea0%22%20d%3D%22M4%202H8V3H9V4H10V8H9V9H8V10H4V9H3V8H2V4H3V3H4Z%22%2F%3E%3C%2Fsvg%3E") 4 fill stretch;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  image-rendering:pixelated;
+}
+/* Gallery uses a frame too; standalone Credits close stays frameless. */
+.gack-gallery-viewer button:is([aria-label="Close photo viewer"],[aria-label="Previous photo"],[aria-label="Next photo"]) {
+  border:4px solid #946e47;
+  border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20shape-rendering%3D%22crispEdges%22%3E%3Cpath%20fill%3D%22%23946e47%22%20d%3D%22M4%200H8V1H10V2H11V4H12V8H11V10H10V11H8V12H4V11H2V10H1V8H0V4H1V2H2V1H4Z%22%2F%3E%3Cpath%20fill%3D%22%23e9cea0%22%20d%3D%22M4%202H8V3H9V4H10V8H9V9H8V10H4V9H3V8H2V4H3V3H4Z%22%2F%3E%3C%2Fsvg%3E") 4 fill stretch;
+  border-radius:0;
+  background:transparent;
+  image-rendering:pixelated;
+}
+:is(#mobilePrev,#mobileNext) {display:flex;align-items:center;justify-content:center}
+:is(.gack-menu-toggle,[data-pixel-icon="menu"],.gack-menu-close,.credits-window .credits-close,.gack-gallery-viewer button[aria-label="Close photo viewer"],[data-pixel-icon="close"],#mobilePrev,.gack-gallery-viewer button[aria-label="Previous photo"],[data-pixel-icon="left"],#mobileNext,.gack-gallery-viewer button[aria-label="Next photo"],[data-pixel-icon="right"],.gack-menu-back):focus-visible {
+  outline:2px solid #a56628;outline-offset:3px;
+}
+@media (hover:hover) {
+  :is(.gack-menu-toggle,.gack-menu-close,#mobilePrev,#mobileNext,.gack-menu-back,[data-pixel-frame],.gack-gallery-viewer button:is([aria-label="Close photo viewer"],[aria-label="Previous photo"],[aria-label="Next photo"])):not(:disabled):hover {
+    filter:brightness(1.09);
+  }
+}
+@supports ((mask-image:url("")) or (-webkit-mask-image:url(""))) {
+  :is(.gack-menu-toggle,[data-pixel-icon="menu"],.gack-menu-close,.credits-window .credits-close,.gack-gallery-viewer button[aria-label="Close photo viewer"],[data-pixel-icon="close"],#mobilePrev,.gack-gallery-viewer button[aria-label="Previous photo"],[data-pixel-icon="left"],#mobileNext,.gack-gallery-viewer button[aria-label="Next photo"],[data-pixel-icon="right"]) {font-size:0;line-height:0}
+  :is(.gack-menu-toggle,[data-pixel-icon="menu"],.gack-menu-close,.credits-window .credits-close,.gack-gallery-viewer button[aria-label="Close photo viewer"],[data-pixel-icon="close"],#mobilePrev,.gack-gallery-viewer button[aria-label="Previous photo"],[data-pixel-icon="left"],#mobileNext,.gack-gallery-viewer button[aria-label="Next photo"],[data-pixel-icon="right"])::after,
+  .gack-menu-back::before {
+    content:"";display:inline-block;width:24px;height:24px;
+    flex:0 0 auto;vertical-align:middle;background:currentColor;
+    -webkit-mask:var(--gack-control-icon) center/contain no-repeat;
+    mask:var(--gack-control-icon) center/contain no-repeat;
+    forced-color-adjust:none;
+  }
+  .gack-menu-back {
+    --gack-control-icon:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20shape-rendering%3D%22crispEdges%22%3E%3Cpath%20d%3D%22M3%205h1v1h-1zM4%204h1v1h-1zM4%206h1v1h-1zM5%203h1v1h-1zM5%207h1v1h-1zM6%202h1v1h-1zM6%208h1v1h-1zM7%201h1v1h-1zM7%209h1v1h-1z%22%2F%3E%3C%2Fsvg%3E");
+    display:inline-flex;align-items:center;gap:4px;
+  }
+  .gack-menu-back::before {width:18px;height:18px}
+}
