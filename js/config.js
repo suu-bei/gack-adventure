@@ -12,6 +12,6 @@ const DAY_FILES = Array.from(
 );
 
 // Refresh updated articles; mounted DAY DOM caching is unchanged.
-DAY_FILES[0] += "?v=day01-x-official-3";
+DAY_FILES[0] += "?v=day01-x-publish-4";
 DAY_FILES[2] += "?v=day03-1";
 

@@ -484,3 +484,12 @@ body{margin:0;background:#292320;color:#6d5140;font-family:Georgia,"Noto Serif T
 .gack-menu-sheet .gack-index-button:disabled{opacity:.5;cursor:not-allowed;background:#a38e73}
 .gack-menu-sheet .gack-index-button[aria-current=true]{background:#775036;color:#fff1cf;border-color:#5a3c29}
 .gack-menu-sheet #gackOpenCredits{margin-top:18px}
+
+/* Official publish.x.com embeds own their height; never crop to a 16:9 wrapper.
+   Keep this separate from the legacy .x-official-tweet zoom rules. */
+.x-embed-slot {
+  display:block;width:100%;min-width:0;height:auto;min-height:0;
+  aspect-ratio:auto;overflow:visible;background:transparent;
+}
+.x-embed-slot .twitter-tweet {margin:0 auto!important}
+.x-embed-slot iframe {max-width:100%}
