@@ -11,6 +11,7 @@ const DAY_FILES = Array.from(
   (_, i) => `days/day${String(i + 1).padStart(2, "0")}.html`,
 );
 
-// Refresh the released DAY01 once; mounted DAY DOM caching is unchanged.
-DAY_FILES[0] += "?v=39.1-day01";
+// Refresh updated articles; mounted DAY DOM caching is unchanged.
+DAY_FILES[0] += "?v=day01-x-1";
+DAY_FILES[2] += "?v=day03-1";
 

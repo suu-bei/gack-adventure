@@ -1,0 +1,86 @@
+/* Shared COMBINE gallery. Scoped to gallery elements; uses the site's Cubic 11. */
+.gack-photo-gallery,.gack-gallery-viewer {
+  font-family:var(--journal-copy-font,'Cubic 11',sans-serif);
+  color:#59402d;
+}
+.gack-photo-gallery {width:100%;max-width:690px;min-width:0;margin:12px auto 34px}
+.gack-gallery-source[hidden] {display:none!important}
+.gack-gallery-source>figure {margin:0 0 16px}
+.gack-gallery-source img {display:block;max-width:100%;height:auto}
+.gack-photo-gallery button,.gack-gallery-viewer button {
+  box-sizing:border-box;font:inherit;color:inherit;cursor:pointer;
+}
+.gack-photo-gallery button:focus-visible,.gack-gallery-viewer button:focus-visible {
+  outline:2px solid #86451f;outline-offset:3px;
+}
+.gack-gallery-fan {
+  position:relative;isolation:isolate;height:clamp(175px,36vw,277px);
+  margin:0 auto;max-width:670px;
+}
+.gack-gallery-card {
+  position:absolute;left:50%;top:50%;width:45%;padding:7px 7px 8px;
+  background:#fff0ca;border:1px solid #ab8252;
+  box-shadow:1px 6px 13px #46281269;
+  transform:translate(calc(-50% + var(--x,0%)), -50%) rotate(var(--angle,0deg));
+  z-index:var(--stack,1);
+  transition:transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.gack-gallery-fan[data-wide] .gack-gallery-card {width:35%}
+@media(hover:hover) {
+  .gack-gallery-fan:not([data-grid]):hover .gack-gallery-card {
+    --x:var(--spread);--angle:var(--turn);
+  }
+  .gack-gallery-fan:not([data-grid]) .gack-gallery-card:hover {
+    z-index:7;
+    transform:translate(calc(-50% + var(--x,0%)), -57%) rotate(var(--angle,0deg));
+  }
+}
+.gack-gallery-card:focus-visible {z-index:8}
+.gack-gallery-card img,.gack-gallery-thumb img {
+  width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:#301f19;
+}
+.gack-gallery-card span,.gack-gallery-thumb span {
+  display:block;padding-top:4px;line-height:1.35;font-size:12px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.gack-gallery-fan[data-grid] {height:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.gack-gallery-fan[data-grid] .gack-gallery-card {position:static;width:100%;min-width:0;transform:none;z-index:auto}
+.gack-gallery-mobile {display:none}
+.gack-gallery-main {
+  display:block;width:100%;padding:5px;margin:0 0 9px;text-align:left;
+  border:1px solid #a67c50;background:#fff0cc;
+}
+.gack-gallery-main img {display:block;width:100%;aspect-ratio:16/10;object-fit:contain;background:#2d211a}
+.gack-gallery-meta {display:flex;justify-content:space-between;gap:6px;padding:4px 5px 0;font-size:12px;line-height:1.45}
+.gack-gallery-meta>span:last-child {white-space:nowrap}
+.gack-gallery-thumbs {display:grid;grid-template-columns:repeat(auto-fit,minmax(44px,1fr));gap:5px}
+.gack-gallery-thumb {min-width:0;min-height:44px;padding:3px;border:1px solid #ad8259;background:#e6c79a}
+.gack-gallery-thumb[aria-pressed=true] {border-color:#7f421e;box-shadow:inset 0 0 0 1px #7f421e;background:#ffd999}
+.gack-gallery-thumb span {font-size:9px}
+.gack-gallery-thumbs[data-compact] .gack-gallery-thumb span {display:none}
+.gack-photo-gallery .gack-gallery-hint {margin:9px 0 0;text-align:center;text-indent:0;font-size:12px;line-height:1.45;color:#71523a}
+@media(max-width:600px) {
+  .gack-gallery-fan,.gack-gallery-fan[data-grid] {display:none}
+  .gack-gallery-mobile {display:block}
+  .gack-gallery-thumbs {grid-template-columns:repeat(var(--thumb-columns),minmax(0,1fr))}
+}
+@media(max-width:320px) {
+  .gack-gallery-thumbs[data-compact] {grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+.gack-gallery-viewer {
+  box-sizing:border-box;width:min(740px,calc(100% - 24px));max-width:none;
+  max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain;
+  touch-action:pan-y pinch-zoom;background:#fae5be;border:2px solid #805432;
+  padding:clamp(10px,2vw,19px);box-shadow:0 20px 48px #0008;
+}
+.gack-gallery-viewer::backdrop {background:#1a1113c9}
+.gack-gallery-viewer-head,.gack-gallery-viewer-foot {display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gack-gallery-viewer h2 {margin:0;font:inherit;font-size:16px}
+.gack-gallery-viewer button {
+  min-width:44px;min-height:44px;padding:0;
+  border:1px solid #a97a49;background:#f3cd8e;font-size:22px;line-height:1;
+}
+.gack-gallery-viewer button:disabled {opacity:.45;cursor:default}
+.gack-gallery-full {display:block;width:100%;height:min(55dvh,460px);object-fit:contain;background:#2d211a;margin:10px 0}
+.gack-gallery-viewer-foot span {font-size:13px}
+@media(prefers-reduced-motion:reduce){.gack-gallery-card{transition:none}}
