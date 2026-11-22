@@ -30,8 +30,7 @@ function ensureDay(n) {
       };
       content.append(page);
       dayPages.set(n, page);
-      if (n === 1 && window.twttr?.widgets?.load)
-        window.twttr.widgets.load(page.querySelector(".x-embed-slot"));
+      window.GackXEmbeds.load(page);
       return page;
     })
     .catch((error) => {
